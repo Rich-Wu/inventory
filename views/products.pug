@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+
+  if products.length > 0
+    h3 #{products}
+  else
+    h3 There are no products that match your request

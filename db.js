@@ -1,0 +1,1 @@
+module.exports = `mongodb+srv://TopDog:qfNP3qUf36qAiy3@groundzero-nwfxk.mongodb.net/inventory?retryWrites=true&w=majority`;
