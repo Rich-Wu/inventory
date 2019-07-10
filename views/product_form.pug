@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  
+  form(action='' method='POST')
+    div.form-inline
+      label(for='vintage') Vintage:
+      input#vintage.form-control(type='number' placeholder='Vintage Year (e.g. 2019)' name='vintage' value=(!product ? '' : product.vintage))
+      label(for='brand') Brand:
+      input#brand.form-control(type='text' placeholder='Brand Name' name='brand' required='true' value=(!product ? '' : product.brand))
+      label(for='name') Product Name:
+      input#name.form-control(type='text' placeholder='Product Name' name='name' required='true' value=(!product ? '' : product.name))
+    div.form-group
+      label(for='country') Country of Origin:
+      input#country.form-control(type='text' name='country' value=(!product ? '' : product.country))
+      label(for='summary') Details:
+      textarea#details.form-control(name='summary')= (!product ? "" : product.summary)
+    div.form-inline
+      label(for='upc') UPC Code:
+      input#upc.form-control(type='text' name='upc' value=(!product ? '' : product.upc) required=true)
+      label(for='type') Type:
+      select#type.form-control(name='type')
+        option(value='Wine') Wine
+        option(value='Spirit') Spirit
+        option(value='Other') Other
+      label(for='price') Price:
+      input#price.form-control(type='number' step='any' name='price' value=(!product ? '' : product.price) required=true)
+    button.btn.btn-primary(type='submit') Add Item
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
