@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 var mongoose = require('mongoose');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -13,7 +14,7 @@ var productsRouter = require('./routes/products');
 var app = express();
 
 // Connect to MongoDB
-var mongoDB = require('./db');
+var mongoDB = process.env.dbInfo;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
